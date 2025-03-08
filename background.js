@@ -1,6 +1,9 @@
-chrome.browserAction.onClicked.addListener(function(tab) {
-  chrome.tabs.executeScript(tab.id, {
-    file: "reload.js",
-    allFrames: true,
+chrome.action.onClicked.addListener(function(tab) {
+  chrome.scripting.executeScript({
+    target: {
+      allFrames: true,
+      tabId: tab.id,
+    },
+    files: ["reload.js"],
   })
 })
